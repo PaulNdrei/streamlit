@@ -15,7 +15,8 @@
  */
 
 import styled, { CSSObject } from "@emotion/styled"
-import { hasLightBackgroundColor, Theme } from "src/theme"
+// import { hasLightBackgroundColor, Theme } from "src/theme"
+import { Theme } from "src/theme"
 
 /*
   "ConnectionStatus" styles are used for displaying
@@ -27,7 +28,7 @@ export const StyledConnectionStatus = styled.div(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: theme.colors.gray,
+  color: theme.colors.white,
 }))
 
 export interface StyledConnectionStatusLabelProps {
@@ -37,7 +38,7 @@ export interface StyledConnectionStatusLabelProps {
 export const StyledConnectionStatusLabel =
   styled.label<StyledConnectionStatusLabelProps>(({ isMinimized, theme }) => ({
     fontSize: theme.fontSizes.sm,
-    color: theme.colors.gray,
+    color: theme.colors.white,
     textTransform: "uppercase",
     marginTop: theme.spacing.none,
     marginRight: isMinimized ? theme.spacing.none : theme.spacing.lg,
@@ -85,7 +86,7 @@ export interface StyledAppStatusLabelProps {
 export const StyledAppStatusLabel = styled.label<StyledAppStatusLabelProps>(
   ({ isPrompt, isMinimized, theme }) => ({
     fontSize: theme.fontSizes.sm,
-    color: isPrompt ? theme.colors.bodyText : theme.colors.gray,
+    color: theme.colors.white,
     textTransform: isPrompt ? "none" : "uppercase",
     margin: `0 0 0 ${theme.spacing.lg}`,
     whiteSpace: "nowrap",
@@ -114,12 +115,13 @@ export const StyledAppButtonContainer =
 
 export const StyledAppRunningIcon = styled.img(({ theme }) => {
   // Testing if current background color is light or dark to modify img:
-  const filter = hasLightBackgroundColor(theme) ? "" : "invert(1)"
+  const filter = "brightness(0) invert(1)"
 
   return {
     opacity: 0.4,
     width: "1.6rem",
     height: "1.6rem",
+    color: theme.colors.white,
     marginRight: `-${theme.spacing.sm}`,
     filter,
   }
@@ -151,6 +153,12 @@ export const StyledStatusWidget = styled.div(({ theme }) => ({
   "&.StatusWidget-exit-active": {
     opacity: 0,
     transition: "opacity 200ms ease-out",
+  },
+
+  "@media (max-width: 580px)": {
+    visibility: "hidden",
+    height: 0,
+    position: "fixed",
   },
 }))
 

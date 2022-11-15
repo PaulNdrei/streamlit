@@ -35,6 +35,7 @@ export interface Props {
   addThemes: (themes: ThemeConfig[]) => void
   sidebarChevronDownshift: number
   getBaseUriParts: () => BaseUriParts | undefined
+  headerTitle: string
 }
 
 export default React.createContext<Props>({
@@ -52,4 +53,5 @@ export default React.createContext<Props>({
   addThemes: (themes: ThemeConfig[]) => {},
   sidebarChevronDownshift: 0,
   getBaseUriParts: getWindowBaseUriParts,
+  headerTitle: "",
 })

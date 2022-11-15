@@ -24,6 +24,7 @@ import Button, { Kind } from "src/components/shared/Button"
 import { IAppPage, PageConfig } from "src/autogen/proto"
 import { Theme } from "src/theme"
 
+import themeColors from "src/theme/baseTheme/themeColors"
 import {
   StyledSidebar,
   StyledSidebarCloseButton,
@@ -244,7 +245,7 @@ class Sidebar extends PureComponent<SidebarProps, State> {
           >
             <StyledSidebarCloseButton>
               <Button kind={Kind.HEADER_BUTTON} onClick={this.toggleCollapse}>
-                <Icon content={Close} size="lg" />
+                <Icon content={Close} size="lg" color={themeColors.gray85} />
               </Button>
             </StyledSidebarCloseButton>
             {!hideSidebarNav && (

@@ -34,7 +34,9 @@ export interface HostCommunicationState {
   hideSidebarNav: boolean
   isOwner: boolean
   menuItems: IMenuItem[]
+  socialItems: ISocialItem[]
   pageLinkBaseUrl: string
+  headerTitle: string
   queryParams: string
   requestedPageScriptHash: string | null
   sidebarChevronDownshift: number
@@ -58,6 +60,13 @@ export type IMenuItem =
       type: "separator"
     }
 
+export type ISocialItem = {
+  title: string
+  url: string
+  color: string
+  classes: string
+}
+
 export type IHostToGuestMessage = {
   stCommVersion: number
 } & (
@@ -79,6 +88,10 @@ export type IHostToGuestMessage = {
   | {
       type: "SET_MENU_ITEMS"
       items: IMenuItem[]
+    }
+  | {
+      type: "SET_SOCIAL_ITEMS"
+      items: ISocialItem[]
     }
   | {
       type: "SET_METADATA"
@@ -138,6 +151,10 @@ export type IGuestToHostMessage =
   | {
       type: "SET_PAGE_TITLE"
       title: string
+    }
+  | {
+      type: "SET_HEADER_TITLE"
+      headerTitle: string
     }
   | {
       type: "SET_QUERY_PARAM"

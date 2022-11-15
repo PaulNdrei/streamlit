@@ -114,10 +114,12 @@ def _get_favicon_string(page_icon: PageIcon) -> str:
 @gather_metrics("set_page_config")
 def set_page_config(
     page_title: Optional[str] = None,
+    header_title: Optional[str] = None,
     page_icon: Optional[PageIcon] = None,
     layout: Layout = "centered",
     initial_sidebar_state: InitialSideBarState = "auto",
     menu_items: Optional[MenuItems] = None,
+    social_icons: Optional[list] = None,
 ) -> None:
     """
     Configures the default settings of the page.
@@ -181,8 +183,14 @@ def set_page_config(
     if page_title is not None:
         msg.page_config_changed.title = page_title
 
+    if header_title is not None:
+        msg.page_config_changed.header_title = header_title
+
     if page_icon is not None:
         msg.page_config_changed.favicon = _get_favicon_string(page_icon)
+
+    if social_icons is not None:
+        msg.page_config_changed.social_icons = str(social_icons)
 
     pb_layout: "PageConfigProto.Layout.ValueType"
     if layout == "centered":

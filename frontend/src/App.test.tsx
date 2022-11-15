@@ -61,6 +61,8 @@ const getHostCommunicationState = (
   hideSidebarNav: false,
   isOwner: true,
   menuItems: [],
+  headerTitle: "",
+  socialItems: [],
   pageLinkBaseUrl: "",
   queryParams: "",
   requestedPageScriptHash: null,

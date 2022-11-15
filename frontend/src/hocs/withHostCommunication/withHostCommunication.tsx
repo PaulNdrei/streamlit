@@ -26,6 +26,7 @@ import {
   IToolbarItem,
   VersionedMessage,
   HostCommunicationState,
+  ISocialItem,
 } from "./types"
 
 export interface HostCommunicationHOC {
@@ -62,6 +63,10 @@ function withHostCommunication(
     const [hideSidebarNav, setHideSidebarNav] = useState(false)
     const [isOwner, setIsOwner] = useState(false)
     const [menuItems, setMenuItems] = useState<IMenuItem[]>([])
+    const [socialItems, setSocialItems] = useState<ISocialItem[]>([])
+    const [headerTitle, setHeaderTitle] = useState<string | undefined>(
+      undefined
+    )
     const [pageLinkBaseUrl, setPageLinkBaseUrl] = useState("")
     const [queryParams, setQueryParams] = useState("")
     const [requestedPageScriptHash, setRequestedPageScriptHash] = useState<
@@ -107,6 +112,9 @@ function withHostCommunication(
         if (message.type === "SET_MENU_ITEMS") {
           setMenuItems(message.items)
         }
+        if (message.type === "SET_SOCIAL_ITEMS") {
+          setSocialItems(message.items)
+        }
 
         if (message.type === "SET_METADATA") {
           setDeployedAppMetadata(message.metadata)
@@ -114,6 +122,10 @@ function withHostCommunication(
 
         if (message.type === "SET_PAGE_LINK_BASE_URL") {
           setPageLinkBaseUrl(message.pageLinkBaseUrl)
+        }
+
+        if (message.type === "SET_HEADER_TITLE") {
+          setHeaderTitle(message.headerTitle)
         }
 
         if (message.type === "SET_SIDEBAR_CHEVRON_DOWNSHIFT") {
@@ -159,7 +171,9 @@ function withHostCommunication(
               hideSidebarNav,
               isOwner,
               menuItems,
+              socialItems,
               pageLinkBaseUrl,
+              headerTitle,
               queryParams,
               requestedPageScriptHash,
               sidebarChevronDownshift,

@@ -17,6 +17,12 @@
 import React, { ReactElement, ReactNode } from "react"
 import AppContext from "src/components/core/AppContext"
 import {
+  StyledHeaderLogoTitle,
+  StyledHeaderLogo,
+  StyledHeaderLogoImage,
+  StyledHeaderTitle,
+} from "src/styled-components-custom"
+import {
   StyledHeader,
   StyledHeaderDecoration,
   StyledHeaderToolbar,
@@ -28,7 +34,7 @@ export interface HeaderProps {
 }
 
 function Header({ isStale, children }: HeaderProps): ReactElement {
-  const { wideMode, embedded } = React.useContext(AppContext)
+  const { wideMode, embedded, headerTitle } = React.useContext(AppContext)
 
   return (
     <StyledHeader
@@ -39,6 +45,16 @@ function Header({ isStale, children }: HeaderProps): ReactElement {
       isStale={isStale}
       data-testid="stHeader"
     >
+      <StyledHeaderLogoTitle>
+        <StyledHeaderLogo>
+          <StyledHeaderLogoImage
+            alt="Plan TL logo"
+            src="/assets/custom/images/logo.png"
+          />
+          <StyledHeaderTitle>{headerTitle}</StyledHeaderTitle>
+        </StyledHeaderLogo>
+      </StyledHeaderLogoTitle>
+
       <StyledHeaderDecoration data-testid="stDecoration" />
       <StyledHeaderToolbar data-testid="stToolbar">
         {children}

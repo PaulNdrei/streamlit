@@ -246,6 +246,7 @@ export const StyledHeaderButton = styled(
 )<RequiredButtonProps>(({ theme }) => {
   return {
     backgroundColor: theme.colors.transparent,
+    color: "#fff",
     border: "none",
     padding: theme.spacing.sm,
     fontSize: theme.fontSizes.sm,

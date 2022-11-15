@@ -357,7 +357,7 @@ class StatusWidget extends PureComponent<StatusWidgetProps, State> {
           onMouseLeave={this.onAppPromptUnhover}
         >
           <StyledAppStatus>
-            <Icon content={Info} margin="0 sm 0 0" color={colors.bodyText} />
+            <Icon content={Info} margin="0 sm 0 0" color={colors.white} />
             <StyledAppStatusLabel isMinimized={minimized} isPrompt>
               Source file changed.
             </StyledAppStatusLabel>

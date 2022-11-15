@@ -28,11 +28,12 @@ import { sendMessageToHost } from "src/hocs/withHostCommunication"
 import AppContext from "src/components/core/AppContext"
 import { BlockNode, AppRoot } from "src/lib/AppNode"
 
+import { FooterCustom } from "src/styled-components-custom"
 import {
   StyledAppViewBlockContainer,
-  StyledAppViewContainer,
   StyledAppViewFooter,
   StyledAppViewFooterLink,
+  StyledAppViewContainer,
   StyledAppViewMain,
 } from "./styled-components"
 
@@ -145,11 +146,55 @@ function AppView(props: AppViewProps): ReactElement {
       )}
       <StyledAppViewMain tabIndex={0} isEmbedded={embedded} className="main">
         {renderBlock(elements.main)}
+
+        <FooterCustom
+          images={[
+            {
+              src: "/assets/custom/images/BSC-blue-small.png",
+              alt: "BSC logo",
+              title: "Barcelona Supercomputing Center",
+              url: "https://www.bsc.es",
+              edit: {
+                customHeight: "5em",
+              },
+            },
+            {
+              src: "/assets/custom/images/plantl.png",
+              alt: "Plan TL logo",
+              title: "Plan de Impulso de las Tecnologías del Lenguaje",
+              url: "https://plantl.mineco.gob.es/Paginas/index.aspx",
+            },
+            {
+              src: "/assets/custom/images/gob-es.png",
+              alt: "Mineco logo",
+              title:
+                "Ministerio de Asuntos Económicos y Transformación Digital",
+              url: "https://portal.mineco.gob.es/en-us/Pages/index.aspx",
+            },
+            {
+              src: "/assets/custom/images/secretaria-es.png",
+              alt: "SEAD logo",
+              title:
+                "Digitalisation and Artificial Intelligence - Telecommunications and Digital Infrastructure",
+              url: "https://avancedigital.mineco.gob.es/en-us/Paginas/index.aspx",
+            },
+          ]}
+        />
+
         <StyledAppViewFooter isEmbedded={embedded} isWideMode={wideMode}>
           Made with{" "}
           <StyledAppViewFooterLink href="//streamlit.io" target="_blank">
             Streamlit
           </StyledAppViewFooterLink>
+          &nbsp;- Powered by the{" "}
+          <a
+            target="_blank"
+            href="https://www.bsc.es/discover-bsc/organisation/scientific-structure/text-mining"
+            rel="noreferrer"
+          >
+            Text Mining unit
+          </a>{" "}
+          at BSC © 2022.
         </StyledAppViewFooter>
       </StyledAppViewMain>
     </StyledAppViewContainer>

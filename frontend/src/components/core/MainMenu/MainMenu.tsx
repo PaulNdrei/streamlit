@@ -479,14 +479,14 @@ function MainMenu(props: Props): ReactElement {
   const showDeploy = isLocalhost() && !shouldShowHostMenu && props.canDeploy
   const preferredMenuOrder: any[] = [
     coreMenuItems.rerun,
-    coreMenuItems.settings,
+    // coreMenuItems.settings,
     coreMenuItems.DIVIDER,
     coreMenuItems.recordScreencast,
     coreMenuItems.DIVIDER,
     coreMenuItems.report,
     coreMenuItems.community,
     ...(shouldShowHostMenu ? hostMenuItems : [coreMenuItems.DIVIDER]),
-    coreMenuItems.about,
+    // coreMenuItems.about,
   ]
 
   const preferredDevMenuOrder: any[] = [

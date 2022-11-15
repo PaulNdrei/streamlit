@@ -32,7 +32,7 @@ export const StyledIcon = styled("span", {
     isPropValid(prop) && !["size", "as"].includes(prop),
 })<StyledIconProps>(({ color, size, margin, padding, theme }) => {
   return {
-    color: theme.colors[color],
+    color: "theme.colors[color]",
     fill: "currentColor",
     display: "inline-flex",
     alignItems: "center",

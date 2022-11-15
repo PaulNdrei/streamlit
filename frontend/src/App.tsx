@@ -96,6 +96,10 @@ import {
   toExportedTheme,
 } from "src/theme"
 
+import { StyledHeaderSocialIcon } from "src/styled-components-custom"
+
+import Button, { Kind } from "src/components/shared/Button"
+
 import { StyledApp } from "./styled-components"
 
 import withHostCommunication, {
@@ -134,6 +138,7 @@ interface State {
   layout: PageConfig.Layout
   initialSidebarState: PageConfig.SidebarState
   menuItems?: PageConfig.IMenuItems | null
+  headerTitle?: string | null
   allowRunOnSave: boolean
   scriptFinishedHandlers: (() => void)[]
   developerMode: boolean
@@ -145,6 +150,12 @@ interface State {
   appPages: IAppPage[]
   currentPageScriptHash: string
   latestRunTime: number
+  socialIcons: Array<{
+    title: string
+    url: string
+    classes: string
+    color: string
+  }>
 }
 
 const ELEMENT_LIST_BUFFER_TIMEOUT_MS = 10
@@ -192,6 +203,7 @@ export class App extends PureComponent<Props, State> {
       isFullScreen: false,
       scriptName: "",
       scriptRunId: "<null>",
+      socialIcons: [],
       appHash: null,
       scriptRunState: ScriptRunState.NOT_RUNNING,
       userSettings: {
@@ -201,6 +213,7 @@ export class App extends PureComponent<Props, State> {
       layout: PageConfig.Layout.CENTERED,
       initialSidebarState: PageConfig.SidebarState.AUTO,
       menuItems: undefined,
+      headerTitle: undefined,
       allowRunOnSave: true,
       scriptFinishedHandlers: [],
       // A hack for now to get theming through. Product to think through how
@@ -439,14 +452,46 @@ export class App extends PureComponent<Props, State> {
   }
 
   handlePageConfigChanged = (pageConfig: PageConfig): void => {
-    const { title, favicon, layout, initialSidebarState, menuItems } =
-      pageConfig
+    const {
+      title,
+      favicon,
+      headerTitle,
+      socialIcons,
+      layout,
+      initialSidebarState,
+      menuItems,
+    } = pageConfig
 
     MetricsManager.current.enqueue("pageConfigChanged", {
       favicon,
       layout,
       initialSidebarState,
     })
+
+    if (typeof socialIcons === "string") {
+      try {
+        const json = JSON.parse(socialIcons.replaceAll("'", '"'))
+        json instanceof Array &&
+          this.setState({
+            socialIcons: json
+              .filter(
+                item =>
+                  typeof item?.title === "string" &&
+                  typeof item?.url === "string" &&
+                  typeof item?.color === "string" &&
+                  typeof item?.classes === "string"
+              )
+              .map(item => ({
+                title: item.title as string,
+                url: item.url as string,
+                color: item.color as string,
+                classes: item.classes as string,
+              })),
+          })
+      } catch (error) {
+        logError(error)
+      }
+    }
 
     if (title) {
       this.props.hostCommunication.sendMessage({
@@ -478,7 +523,7 @@ export class App extends PureComponent<Props, State> {
       }))
     }
 
-    this.setState({ menuItems })
+    this.setState({ menuItems, headerTitle })
   }
 
   handlePageInfoChanged = (pageInfo: PageInfo): void => {
@@ -1322,6 +1367,7 @@ export class App extends PureComponent<Props, State> {
           sidebarChevronDownshift:
             this.props.hostCommunication.currentState.sidebarChevronDownshift,
           getBaseUriParts: this.getBaseUriParts,
+          headerTitle: this.state.headerTitle ?? "",
         }}
       >
         <HotKeys
@@ -1333,6 +1379,26 @@ export class App extends PureComponent<Props, State> {
           <StyledApp className={outerDivClass}>
             {/* The tabindex below is required for testing. */}
             <Header>
+              {this.state.socialIcons.map((item, index) => (
+                <Button key={item.title} kind={Kind.HEADER_BUTTON}>
+                  <StyledHeaderSocialIcon key={index}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      title={item.title}
+                      rel="noreferrer"
+                    >
+                      <i
+                        className={item.classes}
+                        style={{
+                          color: item.color,
+                        }}
+                      ></i>
+                    </a>
+                  </StyledHeaderSocialIcon>
+                </Button>
+              ))}
+
               {!hideTopBar && (
                 <>
                   <StatusWidget
