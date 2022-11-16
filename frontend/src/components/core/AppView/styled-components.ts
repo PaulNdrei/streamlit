@@ -126,15 +126,16 @@ export const StyledAppViewFooter = styled.footer<StyledAppViewFooterProps>(
       color: theme.colors.fadedText40,
       flex: 0,
       fontSize: theme.fontSizes.sm,
-      minWidth: isWideMode ? "auto" : undefined,
-      maxWidth: isWideMode ? "initial" : theme.sizes.contentMaxWidth,
+      width: "fit-content",
+
+      // minWidth: isWideMode ? "auto" : undefined,
+      // maxWidth: isWideMode ? "initial" : theme.sizes.contentMaxWidth,
       padding: `${theme.spacing.sm} ${theme.spacing.lg}`,
       // Increase side padding, if layout = wide and we're not on mobile
       "@media (min-width: 576px)": {
         paddingLeft: wideSidePadding,
         paddingRight: wideSidePadding,
       },
-      width: theme.sizes.full,
       a: {
         color: theme.colors.fadedText60,
       },

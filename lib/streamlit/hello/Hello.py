@@ -28,7 +28,13 @@ def run():
                 "title": "Github",
                 "classes": "fa-brands fa-github fa-xl",
                 "color": "#fff",
-            }
+            },
+            {
+                "url": "https://hub.docker.com/r/bsctemu/anonymization-pipeline",
+                "title": "Docker Hub",
+                "classes": "fa-brands fa-docker fa-xl",
+                "color": "#fff",
+            },
         ],
         menu_items={
             "Get Help": "https://huggingface.co/PlanTL-GOB-ES",
@@ -36,11 +42,13 @@ def run():
             "About": "Demostrador de anonimización de textos bilingüs castellano/catalán entrenado para entornos de participación ciudadana. Para acceder a otros demostradores del PlanTL [ver aqui](https://plantl.bsc.es)",
         },
         page_icon="👋",
+        layout="wide",
         initial_sidebar_state="expanded",
     )
 
     st.write("# Welcome to Streamlit! 👋")
 
+    st.button("Hello here")
     st.sidebar.success("Select a demo above.")
 
     st.markdown(

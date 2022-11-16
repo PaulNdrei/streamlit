@@ -48,7 +48,7 @@ export const StyledHeaderTitle = styled.span(() => ({
 }))
 
 export const StyledHeaderSocialIcon = styled.span(() => ({
-  padding: "0.5rem",
+  padding: 0,
 }))
 
 const Container = styled.div(({ theme }) => ({

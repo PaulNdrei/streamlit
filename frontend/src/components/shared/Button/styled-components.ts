@@ -78,6 +78,7 @@ export const StyledBaseButton = styled.button<RequiredButtonProps>(
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
+    float: "right",
     fontWeight: theme.fontWeights.normal,
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
     borderRadius: theme.radii.md,
