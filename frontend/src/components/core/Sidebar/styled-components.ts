@@ -292,7 +292,7 @@ export const StyledSidebarCollapsedControl =
   styled.div<StyledSidebarCollapsedControlProps>(
     ({ chevronDownshift, isCollapsed, theme }) => ({
       position: "fixed",
-      top: chevronDownshift ? `${chevronDownshift}px` : theme.spacing.sm,
+      top: "0.75rem",
       left: isCollapsed ? theme.spacing.twoXS : `-${theme.spacing.twoXS}`,
       zIndex: theme.zIndices.header,
 
