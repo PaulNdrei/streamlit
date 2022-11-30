@@ -150,33 +150,22 @@ function AppView(props: AppViewProps): ReactElement {
         <FooterCustom
           images={[
             {
+              src: "/assets/custom/images/gene.png",
+              alt: "Generalitat Logo",
+              title: "Generalitat de Catalunya",
+              url: "https://web.gencat.cat/ca/inici",
+              edit: {
+                customHeight: "4em",
+              },
+            },
+            {
               src: "/assets/custom/images/BSC-blue-small.png",
               alt: "BSC logo",
               title: "Barcelona Supercomputing Center",
               url: "https://www.bsc.es",
               edit: {
-                customHeight: "5em",
+                customHeight: "4em",
               },
-            },
-            {
-              src: "/assets/custom/images/plantl.png",
-              alt: "Plan TL logo",
-              title: "Plan de Impulso de las Tecnologías del Lenguaje",
-              url: "https://plantl.mineco.gob.es/Paginas/index.aspx",
-            },
-            {
-              src: "/assets/custom/images/gob-es.png",
-              alt: "Mineco logo",
-              title:
-                "Ministerio de Asuntos Económicos y Transformación Digital",
-              url: "https://portal.mineco.gob.es/en-us/Pages/index.aspx",
-            },
-            {
-              src: "/assets/custom/images/secretaria-es.png",
-              alt: "SEAD logo",
-              title:
-                "Digitalisation and Artificial Intelligence - Telecommunications and Digital Infrastructure",
-              url: "https://avancedigital.mineco.gob.es/en-us/Paginas/index.aspx",
             },
           ]}
         />

@@ -35,11 +35,12 @@ export const StyledHeaderLogo = styled.span(() => ({
 }))
 
 export const StyledHeaderLogoImage = styled.img(() => ({
-  maxWidth: "46px",
+  maxWidth: "64px",
 }))
 
 export const StyledHeaderTitle = styled.span(() => ({
   marginLeft: "1rem",
+  verticalAlign: "sub",
   fontSize: "18px",
   color: "white",
   "@media (max-width: 320px)": {

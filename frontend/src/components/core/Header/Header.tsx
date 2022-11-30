@@ -48,7 +48,7 @@ function Header({ isStale, children }: HeaderProps): ReactElement {
       <StyledHeaderLogoTitle>
         <StyledHeaderLogo>
           <StyledHeaderLogoImage
-            alt="Plan TL logo"
+            alt="Aina logo"
             src="/assets/custom/images/logo.png"
           />
           <StyledHeaderTitle>{headerTitle}</StyledHeaderTitle>

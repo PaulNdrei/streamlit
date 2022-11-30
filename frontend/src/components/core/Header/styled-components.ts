@@ -29,7 +29,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>(
     left: theme.spacing.none,
     right: theme.spacing.none,
     height: theme.sizes.headerHeight,
-    background: theme.colors.primary || "#136b82",
+    background: "linear-gradient(345deg, #326fa2 0%, #1f5480 91%);",
     outline: "none",
     zIndex: theme.zIndices.header,
     display: isEmbedded ? "none" : "block",

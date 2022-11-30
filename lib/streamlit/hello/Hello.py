@@ -22,26 +22,6 @@ def run():
     st.set_page_config(
         page_title="Hello",
         header_title="Hello Demo",
-        social_icons=[
-            {
-                "url": "https://github.com/TeMU-BSC/AnonymizationPipeline",
-                "title": "Github",
-                "classes": "fa-brands fa-github fa-xl",
-                "color": "#fff",
-            },
-            {
-                "url": "https://hub.docker.com/r/bsctemu/anonymization-pipeline",
-                "title": "Docker Hub",
-                "classes": "fa-brands fa-docker fa-xl",
-                "color": "#fff",
-            },
-        ],
-        menu_items={
-            "Get Help": "https://huggingface.co/PlanTL-GOB-ES",
-            "Report a bug": "https://github.com/TeMU-BSC/AnonymizationPipeline/issues",
-            "About": "Demostrador de anonimización de textos bilingüs castellano/catalán entrenado para entornos de participación ciudadana. Para acceder a otros demostradores del PlanTL [ver aqui](https://plantl.bsc.es)",
-        },
-        page_icon="👋",
         layout="wide",
         initial_sidebar_state="expanded",
     )
